@@ -91,16 +91,13 @@ def number_input_auto_format(label, value="", key=None, placeholder=""):
 
 # Initialize connection - menggunakan singleton pattern
 def get_connection():
-    """Get database connection with error handling"""
     try:
-        conn = psycopg2.connect(
-            **DB_CONFIG,
-            sslmode="require"  # 🔑 Supaya koneksi ke Supabase berhasil
-        )
+        conn = psycopg2.connect(st.secrets["db"]["DATABASE_URL"])
         return conn
     except Exception as e:
         st.error(f"❌ Error connecting to database: {e}")
         return None
+
 # Create tables if they don't exist
 def create_tables():
     """Create tables if they don't exist"""
