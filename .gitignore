@@ -1,0 +1,6 @@
+secrets.toml  # Hindari upload secrets
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env  # Jika ada
